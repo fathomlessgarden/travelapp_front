@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
+// import Route from react-router-dom
+import { Route } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
-import Header from './components/header.js'
+import Header from './components/Header';
+import Home from './components/Home';
+import Sign from './components/Sign';
 
+// add routes in the App component
+// it's important to use "exact path" with home
+// otherwise the path "/sign" renders both the Home and the Sign components
+// because "/sign" contains the "/" path
 class App extends Component {
   render() {
     return (
-      <Header />
+      <div>
+        <Header />
+        <div>
+        <Route exact path="/" component={Home}/>
+        </div>
+        <div>
+        <Route exact path="/sign" component={Sign}/>
+        </div>
+      </div>
     );
   }
 }
