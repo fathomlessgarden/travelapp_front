@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
-import Header from './components/Header';
+import Header from './components/header';
 import Home from './components/Home';
-import Sign from './components/Sign';
+import SignUp from './components/SignUp';
 
 // add routes in the App component
 // it's important to use "exact path" with home
@@ -20,7 +20,7 @@ class App extends Component {
         <Route exact path="/" component={Home}/>
         </div>
         <div>
-        <Route exact path="/sign" component={Sign}/>
+        <Route exact path="/sign_up" component={SignUp}/>
         </div>
       </div>
     );
