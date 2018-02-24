@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 // create a simple Home component and export
 class Home extends Component {
 

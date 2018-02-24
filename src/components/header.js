@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // use Link to navigate between routes
+import Auth from './auth';
 import { Link } from 'react-router-dom';
 import { Navbar, MenuItem, Nav, NavItem, NavDropdown } from 'react-bootstrap';
 
@@ -8,7 +9,6 @@ class Header extends Component {
 
   // component render function
   render() {
-
     // component return statement
     return (
       <Navbar inverse collapseOnSelect>
@@ -35,11 +35,9 @@ class Header extends Component {
       </NavDropdown>
     </Nav>
     <Nav pullRight>
+      <Auth/>
       <NavItem>
-        <Link to="/sign">Sign In/Up</Link>
-      </NavItem>
-      <NavItem eventKey={2} href="#">
-        Link Right
+        <Link to="/sign_up">Sign Up</Link>
       </NavItem>
     </Nav>
   </Navbar.Collapse>
