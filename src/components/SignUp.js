@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { Alert, FormGroup, FormControl, HelpBlock, Button, Grid, Row, Col} from 'react-bootstrap';
-
+// require config to access API URL based on current environment
+const config = require('../config.js');
 
 // create a simple sign-in component and export
 class Sign extends Component {
@@ -24,12 +25,14 @@ class Sign extends Component {
   onSignUp(e) {
     // prevent form submmital
     e.preventDefault()
-    // set formdata to properties of this.state
+    console.log(this.getValidationState())
+    console.log('origin ', config.ApiOrigin)
     const formdata = this.state
     // use axios gem to send API request
     axios({
       method: 'post',
-      url: 'http://localhost:3000/auth/',
+      // define url based on current environment
+      url: config.ApiOrigin + '/auth/',
       data: {
         email: formdata.email,
         password: formdata.password,
