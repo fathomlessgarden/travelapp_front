@@ -94,7 +94,7 @@ class SignUpForm extends Component {
             <FormControl onChange={this.handleInputChange} name= 'email' type="text" placeholder="Email" />
             </FormGroup>
             {/* Validation State scope is limited to password input fields */}
-             FormGroup validationState={this.getValidationState()}>
+            <FormGroup validationState={this.getValidationState()}>
             <legend> Password </legend>
             <FormControl onChange={this.handleInputChange} name= 'password' type="password" placeholder="Password" />
             <FormControl onChange={this.handleInputChange} name='password_confirmation' type="password" placeholder="Password Confirmation" />
