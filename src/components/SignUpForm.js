@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { Alert, FormGroup, FormControl, HelpBlock, Button, Grid, Row, Col} from 'react-bootstrap';
+import { FormGroup, FormControl, HelpBlock, Button, Grid, Row, Col} from 'react-bootstrap';
+import Error from './Error';
 // require config to access API URL based on current environment
 const config = require('../config.js');
 
@@ -75,46 +76,34 @@ class SignUpForm extends Component {
   // Flasherror element.
   flashError(error) {
     const errors = error.response.data.errors.full_messages.join(", ")
-    const errorelm = (
-      <Alert bsStyle="danger">
-      <p> {errors} </p>
-      </Alert>
-    );
-    ReactDOM.render(errorelm, document.getElementById('flashError'))
+    // pass errors to the Error component through props as an object
+    // called errorMessage
+    ReactDOM.render(<Error errorMessage={errors} />, document.getElementById('flashError'))
   }
-
 
   // component render function
   render() {
     // component return statement
     return (
-      <Grid>
-        <Row>
-          <Col xs={12} md={5}>
-            <div id='flashError'></div>
-            <div className='sign_up'>
-            {/*on submit call onSignUp*/}
-              <form onSubmit={this.onSignUp}>
-                <FormGroup>
-                  <legend> Email Address</legend>
+      <div className='sign_up'>
+       {/*on submit call onSignUp*/}
+        <form onSubmit={this.onSignUp}>
+          <FormGroup>
+            <legend> Email Address</legend>
             {/* When value changes set this.state property via handleInputChange */}
-                  <FormControl onChange={this.handleInputChange} name= 'email' type="text" placeholder="Email" />
-                 </FormGroup>
+            <FormControl onChange={this.handleInputChange} name= 'email' type="text" placeholder="Email" />
+            </FormGroup>
             {/* Validation State scope is limited to password input fields */}
-                 <FormGroup validationState={this.getValidationState()}>
-                   <legend> Password </legend>
-                   <FormControl onChange={this.handleInputChange} name= 'password' type="password" placeholder="Password" />
-                   <FormControl onChange={this.handleInputChange} name='password_confirmation' type="password" placeholder="Password Confirmation" />
-                   <FormControl.Feedback />
-                   <HelpBlock> Password must be longer than 8 characters. </HelpBlock>
-                   <Button bsStyle='success' type='submit'> Sign Up </Button>
-                 </FormGroup>
-
-              </form>
-            </div>
-          </Col>
-        </Row>
-      </Grid>
+             FormGroup validationState={this.getValidationState()}>
+            <legend> Password </legend>
+            <FormControl onChange={this.handleInputChange} name= 'password' type="password" placeholder="Password" />
+            <FormControl onChange={this.handleInputChange} name='password_confirmation' type="password" placeholder="Password Confirmation" />
+            <FormControl.Feedback />
+           <HelpBlock> Password must be longer than 8 characters. </HelpBlock>
+           <Button bsStyle='success' type='submit'> Sign Up </Button>
+          </FormGroup>
+        </form>
+      </div>
     )
   }
 }
