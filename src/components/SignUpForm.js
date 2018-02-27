@@ -75,7 +75,8 @@ class SignUpForm extends Component {
   // Displays error message returned by API Call in the
   // Flasherror element.
   flashError(error) {
-    const errors = error.response.data.errors.full_messages.join(", ")
+    // Create array of list items containing errors
+    const errors = error.response.data.errors.full_messages.map(error=> <li>{error}</li>)
     // pass errors to the Error component through props as an object
     // called errorMessage
     ReactDOM.render(<Error errorMessage={errors} />, document.getElementById('flashError'))

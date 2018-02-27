@@ -12,7 +12,7 @@ class Error extends Component {
     // component return statement
     return (
       <Alert bsStyle="danger">
-        <p> { errorMessage } </p>
+        <ul> { errorMessage } </ul>
       </Alert>
     )
   }
