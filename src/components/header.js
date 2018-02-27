@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+// use Link to navigate between routes
+import Auth from './auth';
+import { Link } from 'react-router-dom';
 import { Navbar, MenuItem, Nav, NavItem, NavDropdown } from 'react-bootstrap';
 
 // Header component holds the nav
@@ -7,13 +9,12 @@ class Header extends Component {
 
   // component render function
   render() {
-
     // component return statement
     return (
       <Navbar inverse collapseOnSelect>
   <Navbar.Header>
     <Navbar.Brand>
-      <a href="#brand">React-Bootstrap</a>
+      <Link to="/">Home</Link>
     </Navbar.Brand>
     <Navbar.Toggle />
   </Navbar.Header>
@@ -34,11 +35,9 @@ class Header extends Component {
       </NavDropdown>
     </Nav>
     <Nav pullRight>
-      <NavItem eventKey={1} href="#">
-        Link Right
-      </NavItem>
-      <NavItem eventKey={2} href="#">
-        Link Right
+      <Auth/>
+      <NavItem>
+        <Link to="/sign_up">Sign Up</Link>
       </NavItem>
     </Nav>
   </Navbar.Collapse>
