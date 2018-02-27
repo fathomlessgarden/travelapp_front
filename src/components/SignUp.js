@@ -74,10 +74,13 @@ class Sign extends Component {
   // Displays error message returned by API Call in the
   // Flasherror element.
   flashError(error) {
-    const errors = error.response.data.errors.full_messages.join(", ")
+    // Create array of list items containing errors
+    const errors = error.response.data.errors.full_messages.map(error=> <li>{error}</li>)
     const errorelm = (
       <Alert bsStyle="danger">
-      <p> {errors} </p>
+      <ul>
+        {errors}
+      </ul>
       </Alert>
     );
     ReactDOM.render(errorelm, document.getElementById('flashError'))
